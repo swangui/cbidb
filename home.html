@@ -1,0 +1,193 @@
+<html xmlns:wb=“http://open.weibo.com/wb”>
+<head>
+  <title>私家车财物失窃数据库(仅限中国大陆地区)</title>
+  <meta name="description" content="使公众将私家车财物失窃数据看作为度量社区生活幸福安定指数的一个参考值。通过采集并公开私家车财物失窃案的数据，让公众意识到私家车财物失窃案对社会带来的危害。">
+  <meta name="news_keywords" content="中国, 私家车, 数据库, 失窃案, 盗窃案, 维权, 报案">
+  <meta name="keywords" content="中国, 私家车, 数据库, 失窃案, 盗窃案, 维权, 报案">
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37325817-1']);
+    _gaq.push(['_setDomainName', 'cbidb.com']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <link rel="stylesheet" href="cbidb.css">
+  <script src="http://tjs.sjs.sinajs.cn/open/api/js/wb.js" type="text/javascript" charset="utf-8"></script>
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+  <script src="runonce.js"></script>
+</head>
+<body>
+  <div class="wrap"><div class="inner-wrap">
+    <div class="header">
+      <h1>私家车财物失窃数据库(仅限中国大陆地区)</h1>
+      <h1 class="small">Car Break-In Database (China Mainland Only)</h1>
+    </div>
+    <div class="content-body">
+      <div class="navigation nav col">
+        <ul>
+          <li>
+            <a href="#introduction" class="zhcn">介绍CBIDB</a><br />
+            <a href="#introduction" class="enus">Introduction</a>
+          </li>
+          <li>
+            <a href="#goals-and-missions" class="zhcn">目标与使命</a><br />
+            <a href="#goals-and-missions" class="enus">Goals and Missions</a>
+          </li>
+          <li>
+            <a href="#public-database" class="zhcn">公开的数据库</a><br />
+            <a href="#public-database" class="enus">Public Database</a>
+          </li>
+          <li>
+            <a href="#data-mining" class="zhcn">失窃案的统计</a><br />
+            <a href="#data-mining" class="enus">Data Mining</a>
+          </li>
+          <li>
+            <a href="#contact-cbidb" class="zhcn">与我们取得联系</a><br />
+            <a href="#contact-cbidb" class="enus">Contact CBIDB</a>
+          </li>
+        </ul>
+      </div>
+      <div class="actions col submit-report">
+        <div class="text">
+          如果您曾在大陆地区遭遇私家车窃案，<br />
+          请点击正下方的按钮参与我们的登记。
+        </div>
+        <a href="/report" class="report-now">
+          我要登记私家车窃案
+        </a>
+        <div class="text" style="margin-top:50px;">
+          已有{{data.action.count}}个案件被存档
+        </div>
+      </div>
+      <div class="actions col social">
+        <div class="text" style="margin-bottom:5px; ">
+          关注我们的新浪微博
+        </div>
+        <div class="follow-weibo">
+          <wb:follow-button uid="2880292167" type="red_4" height="64" ></wb:follow-button>
+        </div>
+        <div class="text" style="margin-top:30px; ">
+          与朋友分享我们的数据
+        </div>
+        <div class="share-button">
+          <!-- Baidu Button BEGIN -->
+          <div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+          <a class="bds_tsina"></a>
+          <a class="bds_qzone"></a>
+          <a class="bds_renren"></a>
+          <a class="bds_tqq"></a>
+          <a class="bds_t163"></a>
+          <span class="bds_more"></span>
+          <a class="shareCount"></a>
+          </div>
+          <script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=0" ></script>
+          <script type="text/javascript" id="bdshell_js"></script>
+          <script type="text/javascript">
+          document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000)
+          </script>
+          <!-- Baidu Button END -->
+        </div>
+      </div>
+    </div>
+  </div></div>
+  <a name="introduction"></a>
+  <div class="wrap"><div class="inner-wrap">
+    <div class="main-content">
+      <h2>介绍CBIDB</h2>
+      <p>CBIDB的全称是Car Break-Ins Database ，官方中文翻译是私家车财物失窃数据库。本数据库是一个不以盈利为目的的公益团体，由网友自发组成。目前不接受任何第三方以任何形式的资金支持。该平台承诺不向任何第三方提供用户的隐私信息；不销售任何形式的产品；不具有任何政治倾向；不宣扬任何宗教和地域歧视。</p>
+      <p>目前仅在中国大陆地区，采集与私家车财物失窃案件相关的损失数据。我们会根据已采集的数据客观地进行评估，并对于可信数据进行统计并予以公开。数据可信度评估的算法我们将在合适的时机予以公开。公开的统计数据仅作为公众的参考，未经当地法律界定不能立即在法庭上成为有效的证据。</p>
+      <p>建立本数据库的初衷主要基于以下几个事实依据。</p>
+      <h3>1. 私家车财产窃案统计数据难以获得</h3>
+      <p>针对侵犯私家车财产的案件统计数据难以获得。统计数据主要指报案数量，损失统计，破案率。</p>
+      <h3>2. 灰色利益链的分析尚不明确</h3>
+      <p>被窃财物的去向，销赃链对社会的危害和影响不明。如何防范、监管以防止并杜绝灰色利益链形成尚不明。偷盗者、收赃者、汽车修理铺、汽车零部件销售商、4S店修理厂、监管部门和执法机关所起作用不明。</p>
+      <h3>3. 居民私家车（非政府公车）拥有量不断加速出现新高</h3>
+      <p>中国机动车保有量达2.17亿辆，私家车破7000万辆 [参考1]，2011年07月18日中新社北京记者张蔚然发布了这样一篇报道。而截止目前，本数据库上的时间已显示2012年12月31日。</p>
+      <p>北京城市总体规划[参考2]，“预计2020年，全市民用机动车拥有量达到500万辆左右”。</p>
+      <p>上海个人民用车辆拥有量2011年已达245.88万[参考5]；常州汽车保有量已达60万 私家车超过40万辆[参考3]；2012年大连私家车保有量达到111万 十年增10倍! [参考4] </p>
+      <h3>4. 城镇化以及流动人口对私家车财产安全带来的挑战</h3>
+      <p>北京城市总体规划[参考2]，同时指出“2020年，北京市总人口规模规划控制在1800万人左右，年均增长率控制在1.4%以内。其中户籍人口1350万人左右，居住半年以上外来人口450万人左右。”。</p>
+      <p>上海市城市总体规划[参考6]，按照2020年总人口为2000万左右的规模，考虑城市空间发展和重大基础设施建设。而2010年第六次全国人口普查显示，上海市全市总人口为2301.91万人，外来人口占总数的39%。[参考 7]</p>
+      <h3>5. 私家车主是弱势群体</h3>
+      <p>私家车主除了买车时交去种种税金和销售商名目众多的杂费之外。还有保险费、停车费、过路费、环保费和验车费。在交了各种税费之后，私家车的财产安全问题又出现了。这是一个真空地带，物业和停车场只负责出租场地，偷盗案件似乎无责。向公安机关报案后又石沉大海。私家车主的安全感每况愈下，谁来帮助他们维权？</p>
+    </div>
+  </div></div>
+
+  <a name="goals-and-missions"></a>
+  <div class="wrap"><div class="inner-wrap">
+    <div class="main-content">
+      <h2>目标与使命</h2>
+      <p>使公众将该数据看作为度量社区生活幸福安定指数的一个参考值。通过采集并公开私家车财物失窃案的数据，让公众意识到私家车财物失窃案对社会带来的危害性。</p>
+    </div>
+  </div></div>
+
+  <a name="public-database"></a>
+  <div class="wrap"><div class="inner-wrap">
+    <div class="main-content">
+      <h2>公开的数据库</h2>
+      <p>公开的数据库并不意味着把所有的数据全部公布，此处“所有”不包括不实的、虚假的和隐私的。我们会对采集的数据进行评估。并将敏感字段比如提交者姓名和联系方式等作隐去处理。</p>
+    </div>
+  </div></div>
+
+  <a name="data-mining"></a>
+  <div class="wrap"><div class="inner-wrap">
+    <div class="main-content">
+      <h2>失窃案统计</h2>
+      <p>本数据库于2013年1月1日上线开始采集，统计结果取决于采集的数据量。统计结果主要以图表和表格的形式出现。公开的统计结果仅作为公众的参考，未经当地法律界定不能立即在法庭上成为有效的证据。</p>
+    </div>
+  </div></div>
+
+  <a name="contact-cbidb"></a>
+  <div class="wrap"><div class="inner-wrap">
+    <div class="main-content">
+      <h2>与我们取得联系</h2>
+      <p>您可以通过我们的官方微博与我们取得联系 @私家车财物失窃数据库</p>
+      <p>您也可以写电子邮件给我们 cbidb.china@gmail.com</p>
+      <p>但我们不能保证及时回复您</p>
+    </div>
+  </div></div>
+
+  <div class="wrap"><div class="inner-wrap">
+    <div class="main-content">
+      <h2>被本数据库参考的公开新闻或文献</h2>
+      <ol>
+        <li>
+          中国机动车保有量达2.17亿辆 私家车破7000万辆 2011-07-18<br />
+          http://www.chinanews.com/auto/2011/07-18/3189951.shtml
+        </li>
+        <li>
+          北京城市总体规划<br />
+          http://zhengwu.beijing.gov.cn/ghxx/ztgh/
+        </li>
+        <li>
+          常州汽车保有量已达60万 私家车超过40万辆 2012-10-19<br />
+          http://js.people.com.cn/html/2012/10/19/173785.html
+        </li>
+        <li>
+          大连私家车保有量达到111万 十年增10倍! 2012-10-09<br />
+          http://dalian.auto.sohu.com/20121009/n354490663.shtml
+        </li>
+        <li>
+          上海个人民用车辆拥有量（2009～2011）<br />
+          http://www.stats-sh.gov.cn/tjnj/nj12.htm?d1=2012tjnj/C1413.htm
+        </li>
+        <li>
+          上海市城市总体规划（1999年—2020年）中、近期建设行动计划<br />
+          http://www.shanghai.gov.cn/shanghai/node2314/node12959/node12967/userobject21ai50955.html
+        </li>
+        <li>
+          维基百科，词条：上海市<br />
+          http://zh.wikipedia.org/wiki/%E4%B8%8A%E6%B5%B7%E5%B8%82#.E4.BA.BA.E5.8F.A3.E4.B8.8E.E6.B0.91.E6.97.8F
+        </li>
+      </ol>
+    </div>
+  </div></div>
+
+</body>
+</html>
+

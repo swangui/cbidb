@@ -1,0 +1,31 @@
+var mongoose = require('mongoose');
+var model = require('./mongodb');
+
+module.exports = {
+  save_report: function( req, res ){
+    var file_data = JSON.parse(req.data.file);
+    var File = mongoose.model('File', model.FileSchema);
+    var file = new File( file_data );
+    
+    file.save(function(err, file){
+      if(err)
+        console.log( 'error' );
+      else
+        console.log( file.reporter_fullname + ' is saved to db' );
+    })
+    res.writeHead(200, {'Content-Type': 'text/plain'});
+    res.end( req.data.file );
+    
+    return
+  },
+  home: function( req, res, callback ){
+    var data = {};
+    var startAt = 88;
+    var File = mongoose.model('File', model.FileSchema);
+    File.count({}, function(err, c){
+      data.count = startAt + c;
+      callback(data);
+    });
+    return
+  }
+}

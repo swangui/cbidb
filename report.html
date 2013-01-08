@@ -1,0 +1,267 @@
+<html>
+<head>
+  <title>私家车财物失窃登记表格(仅限中国大陆地区)</title>
+  <meta name="description" content="使公众将私家车财物失窃数据看作为度量社区生活幸福安定指数的一个参考值。通过采集并公开私家车财物失窃案的数据，让公众意识到私家车财物失窃案对社会带来的危害。">
+  <meta name="news_keywords" content="中国, 私家车, 数据库, 失窃案, 盗窃案, 维权, 报案, 登记表格">
+  <meta name="keywords" content="中国, 私家车, 数据库, 失窃案, 盗窃案, 维权, 报案, 登记表格">
+  <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37325817-1']);
+    _gaq.push(['_setDomainName', 'cbidb.com']);
+    _gaq.push(['_trackPageview']);
+  
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+  <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.min.js"></script>
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.9.2/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="cbidb.css">
+  <script src="json2.js"></script>
+  <script src="car_data.js"></script>
+  <script src="geo_data.js"></script>
+  <script src="utils.js"></script>
+  <script src="runonce.js"></script>
+</head>
+<body>
+
+<div class="wrap"><div class="inner-wrap">
+  <h1>私家车财物失窃登记表格(仅限中国大陆地区)</h1>
+  <p>填写本表格预计会花费您10分钟的时间，在此我们表示歉意与感谢。为了更好地维护您的财产安全，请认真填写，尽可能地详细。</p>
+  <div>
+    <h2>私家车车辆信息部分</h2>
+    <p>该信息有助于我们统计受害车辆的品牌车型分布，以期能够敦促制造商改进设计。</p>
+    <table>
+      <tr class="nobb"><td colspan="2">请指定您的私家车车型</td></tr>
+      <tr class="nobt nobb">
+        <td width="142" class="nobr"><select class="car_brand" style="width:142px; "></select></td>
+        <td class="nobl"><select class="car_series" style="width:142px; "><option>-</option></select></td>
+      </tr>
+      <tr class="nobt nobb">
+        <td colspan="2"><select class="car_model_select" style="width:300px; "><option>-</option></select></td>
+      </tr>
+      <tr class="nobt">
+        <td colspan="2">
+          <div>
+            只找到品牌和系列，没有在“具体车型”列表找到您的车型？<br />
+            劳驾您手工输入在下方。我们建议您遵循的填写格式：2010款&lt;空格&gt;1.8tsi&lt;空格&gt;自动
+          </div>
+          <input type="text" class="car_model" style="width:300px;" />
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">
+          <div>您当时购买该车型的价格；请注意该价格无需包含各类税费以及上牌的费用。</div>
+          <input type="text" class="car_price" onkeydown="$validate_number(this, event)" />货币单位：人民币，只允许数字
+        </td>
+      </tr>
+    </table>
+    <h2>案件信息部分</h2>
+    <p>该信息有助于我们加强防范，帮助我们的朋友在购车前参考。</p>
+    <table>
+      <tr>
+        <td width="100" class="nobr">您的车牌号</td>
+        <td width="160" class="nobl"><input type="text" class="license_plate" /></td>
+        <td width="160" class="nobr">VIN<br />即车架号，<a href="http://baike.baidu.com/view/1491907.htm" target="_blank">什么是VIN?</a></td>
+        <td class="nobl"><input type="text" class="car_vin" /></td>
+      </tr>
+      <tr>
+        <td class="nobr">案发日期</td><td class="nobl"><input type="text" class="happen_date" /></td>
+        <td class="nobr">案发时间</td><td class="nobl"><select class="happen_time"></select>许</td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="nobr">案发地点</td>
+        <td colspan="3" class="nobl nobb_td">
+          <input type="hidden" class="happen_place" />
+          <select class="country"><option>中国大陆</option></select>
+          <select class="province"></select>
+          <select class="city"></select>
+          <select class="district"></select>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="3" class="nobl nobt_td">
+          道路<input type="text" class="street" />
+          门牌号<input type="text" class="number" />
+          地点备注<input type="text" class="other" />
+        </td>
+      </tr>
+      <tr class="nobb">
+        <td colspan="4">被盗窃物品清单</td>
+      </tr>
+      <tr class="nobt">
+        <td colspan="4">
+          <div>
+            请用半角的英文“,”逗号将被盗物品的数量及名称逐一列出。
+            <nobr>输入范例：1个全尺寸备胎,1个某品牌GPS,1个某品牌女包</nobr>
+          </div>
+          <input type="text" class="stolen_items" style="width:80%" /></td>
+      </tr>
+      <tr class="nobb">
+        <td colspan="4">损毁物品清单</td>
+      </tr>
+      <tr class="nobt">
+        <td colspan="4">
+          <div>
+            请用半角的英文“,”逗号将被损毁物品的数量及名称逐一列出。
+            <nobr>输入范例：1个驾驶员车门锁芯,2把遥控钥匙,1个点火系统</nobr>
+          </div>
+          <input type="text" class="broken_items" style="width:80%" />
+        </td>
+      </tr>
+      <tr class="nobb">
+        <td colspan="4">您的总损失折合成现金</td>
+      </tr>
+      <tr class="nobt">
+        <td colspan="4">
+          <div>
+            当时为了使您的私家车再次正常运作，并使生活恢复往常。
+            <nobr>您总共花费了多少现金用来修复并购买被盗和损毁的物品？</nobr>
+          </div>
+          <input type="text" class="loss_costs" onkeydown="$validate_number(this, event)" />货币单位：人民币，只允许数字
+        </td>
+      </tr>
+    </table>
+    <h2>报警及案发后所采取的相关措施</h2>
+    <p>该部分是本数据库很重要的一个部分</p>
+    <table>
+      <tr>
+        <td width="100" class="nobr">报案日期</td>
+        <td width="100" class="nobl"><input type="text" class="report_date" /></td>
+        <td width="100" class="nobr">报案时间</td>
+        <td class="nobl"><select class="report_time"></select>许</td>
+      </tr>
+      <tr class="nobb">
+        <td colspan="4">报案单位</td>
+      </tr>
+      <tr class="nobt">
+        <td colspan="4">
+          <div>
+            您是否在发现窃案后立即拨打了110报警电话，通常案发所在地的派出所会派民警到现场勘察；<br />
+            并提供机会让您做笔录叙述案情并提供您一张报案回执，以期破案。您当时是否报案？<br />
+            如果是，请提供当时报案的派出所名称。范例：上海市公安局徐汇分局龙华派出所
+          </div>
+          <input type="text" class="report_to" style="width:400px" />
+        </td>
+      </tr>
+      <tr class="nobb">
+        <td colspan="4">直到现在为止，是否被回访过？</td>
+      </tr>
+      <tr class="nobt nobb">
+        <td colspan="4">
+          当您成功报案、做完笔录并拿到报案回执之后至今，您是否接到过报案单位的回访？<br />
+          回访内容包括：请您进一步协助调查；通知您他们正在做破案方面的努力；
+        </td>
+      </tr>
+      <tr class="nobt">
+        <td colspan="4">
+          <label><input name="revisited" type="radio" value="true" /> 是的，有过回访。</label>
+          <label><input name="revisited" type="radio" value="false" /> 不，完全没有。</label>
+        </td>
+      </tr>
+      <tr class="nobb">
+        <td colspan="4">直到现在为止，是否已经破案？</td>
+      </tr>
+      <tr class="nobt">
+        <td colspan="4">
+          <label><input name="resolved" type="radio" value="true" /> 是的，已经破案。</label>
+          <label><input name="resolved" type="radio" value="false" /> 不，到目前为止还没有破案。</label>
+        </td>
+      </tr>
+      <tr class="nobb">
+        <td colspan="4">
+          除了向公安机关报案之外，被窃案发生时您是否有正有效的“私家车盗抢险”？
+        </td>
+      </tr>
+      <tr class="nobt">
+        <td colspan="4">
+          <label><input name="insurance_covered" type="radio" value="true" /> 是的，我有过。</label>
+          <label><input name="insurance_covered" type="radio" value="false" /> 不，我没有过。</label>
+        </td>
+      </tr>
+      <tr class="nobb">
+        <td colspan="4">
+          如果您当时购买过的“私家车盗抢险”品牌，没有则不填。范例：太平洋汽车保险
+        </td>
+      </tr>
+      <tr class="nobt">
+        <td colspan="4">
+          <input type="text" class="insurance_brand" style="width:300px;" />
+        </td>
+      </tr>
+      <tr class="nobb">
+        <td colspan="4">
+          在发生私家车财物失窃案后，以及在够买了“私家车盗抢险”的前提下，您是否对保险公司要求理赔成功？
+        </td>
+      </tr>
+      <tr class="nobt">
+        <td colspan="4">
+          <label><input name="compensated" type="radio" value="true" /> 是的，保险公司理赔了。</label>
+          <label><input name="compensated" type="radio" value="false" /> 不，到目前为止还没有。</label>
+        </td>
+      </tr>
+      <tr class="nobb">
+        <td colspan="4">
+          如果您有幸已经从保险公司获赔成功，请告诉我们获赔比例（获赔比例 ＝ 获赔金额／损失金额）<br />
+          没有或不想说则不填写。
+        </td>
+      </tr>
+      <tr class="nobt">
+        <td colspan="4">
+          <input type="text" class="compensated_percent" style="text-align:right; width:50px; " />%
+        </td>
+      </tr>
+    </table>
+    <h2>您的联系方式</h2>
+    <p>
+      我们绝不会向任何第三方组织透露您的联系方式，您联系方式是我们用来评估您数据可靠程度的依据之一。
+      我们可能会在日后以绅士的方式通过您提供的联系方式进行取证，当然您完全可以拒绝配合。
+    </p>
+    <table>
+      <tr>
+        <td width="150" class="nobr">您的真实姓名，或代号</td>
+        <td width="150" class="nobl"><input type="text" class="reporter_fullname" /></td>
+        <td width="150" class="nobr">您的称谓</td>
+        <td class="nobl"><select class="reporter_title">
+            <option>先生</option>
+            <option>女士</option>
+        </select></td>
+      </tr>
+      <tr>
+        <td class="nobr">您的电子邮件</td>
+        <td class="nobl"><input type="text" class="reporter_email" /></td>
+        <td class="nobr">您的手机号码</td>
+        <td class="nobl"><input type="text" class="reporter_mobile" /></td>
+      </tr>
+      <tr>
+        <td class="nobr">您的座机号码</td>
+        <td class="nobl" colspan="3"><input type="text" class="reporter_tel" /></td>
+      </tr>
+      <tr class="nobb">
+        <td colspan="4">备注</td>
+      </tr>
+      <tr class="nobt">
+        <td colspan="4"><textarea class="memo" style="width:80%; height:50px; "></textarea></td>
+      </tr>
+    </table>
+  </div>
+  <br />
+  <div>
+    <label><input class="user-credit" type="checkbox" /> 我保证上述所有填写的内容都是真实有效的。</label>
+  </div>
+  <div class="buttons">
+    <!--<button>预览</button>--> 
+    <button id="submit-report">提交私家车财物失窃登记表格</button>
+  </div>
+</div></div>
+
+
+
+
+
+
+</body>
+</html>

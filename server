@@ -1,0 +1,78 @@
+#!/usr/local/bin/node
+
+var http = require('http'),
+    util = require('util'),
+    mu = require('mu2'),
+    fs = require('fs'),
+    path = require('path'),
+    qs = require('querystring'),
+    handler = require('./handlers')
+
+var tpl_data = {
+  footer: 'Powered by Node.js + MongoDB'
+}
+
+mu.root = __dirname + '/';
+
+http.createServer(function (req, res) {
+  var default_home = 'home';
+  var template_ext = '.html';
+  var accept_static = /[(?:\.css)(?:\.js)]$/i.test(req.url);
+  var filename = '';
+  if( accept_static == true ){
+    filename = req.url;
+  }else{
+    if( req.url == '/' ) req.url += default_home; 
+    filename = req.url + template_ext;
+  }
+  var req_path = __dirname + filename;
+  var req_path_exists = path.existsSync( req_path );
+  
+  var action_name = req.url.replace(/^\//,'');
+  var action_exists = typeof handler[action_name] != 'undefined' ? 1 : 0;
+  /*
+  console.log( 'ROOT_PATH: ' + __dirname );
+  console.log( 'URL: ' + req.url );
+  console.log( 'FILENAME: ' + filename);
+  console.log( 'REQ_PATH: ' + req_path );
+  */    
+  
+  if( action_exists ){
+    var querydata = '';
+    req.on('data', function(chunk) {
+      querydata += chunk;
+    });
+    req.on('end', function(){
+      req.data = qs.parse( querydata );
+      handler[ action_name ]( req, res, function( data ){
+        tpl_data.action = data;
+        tpl_data.action_name = action_name;
+        
+        if( req_path_exists == true ){
+          if( accept_static == false ){
+            res.writeHead(200, {'Content-Type': 'text/html'});
+            mu.clearCache();
+            var stream = mu.compileAndRender(req_path, {data: tpl_data} )
+            util.pump(stream, res);
+          }
+        }
+      });
+    })
+  }else{
+    if( req_path_exists == true ){
+      if( accept_static == true ){
+        res.writeHead(200, {'Content-Type': 'text/plain'});
+        res.end( fs.readFileSync( req_path ) )
+      }else{
+        res.writeHead(200, {'Content-Type': 'text/html'});
+        mu.clearCache();
+        var stream = mu.compileAndRender(req_path, {data: tpl_data} )
+        util.pump(stream, res);
+      }
+    }else{
+      res.writeHead(400, {'Content-Type': 'text/html'});
+      res.end('e');
+    }
+  }
+}).listen(8110);
+

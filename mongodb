@@ -1,0 +1,47 @@
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://admin:54dfbb24@127.0.0.1:1311/cbi');
+var db = mongoose.connection;
+
+
+module.exports = {
+  FileSchema: mongoose.Schema({
+    reporter_email: String,
+    reporter_fullname: String,
+    reporter_title: String,
+    car_brand: String,
+    car_series: String,
+    car_model: String,
+    car_price: Number,
+    car_vin: String,
+    license_plate: String,
+    stolen_items: String,
+    broken_items: String,
+    loss_costs: Number,
+    happen_date: Date,
+    happen_time: String,
+    happen_place: { 
+      country: { type: String, default: 'China'}, 
+      province: String, 
+      city: String,
+      district: String,
+      street: String,
+      number: String,
+      other: String
+    },
+    report_date: Date,
+    report_time: String,
+    report_to: String,
+    revisited: Boolean,
+    resolved: Boolean,
+    insurance_covered: Boolean,
+    insurance_brand: String,
+    compensated: Boolean,
+    compensated_percent: Number,
+    reporter_tel: String,
+    reporter_mobile: String,
+    memo: String
+  })
+  
+}
+
+
